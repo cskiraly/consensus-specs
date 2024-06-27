@@ -228,7 +228,6 @@ def get_data_column_sidecars(signed_block: SignedBeaconBlock,
 
 ```python
 def get_extended_sample_count(allowed_failures: uint64) -> uint64:
-    assert 0 <= allowed_failures <= NUMBER_OF_COLUMNS // 2
     """
     Return the sample count if allowing failures.
 
@@ -237,6 +236,7 @@ def get_extended_sample_count(allowed_failures: uint64) -> uint64:
     Nested functions are direct replacements of Python library functions math.comb and
     scipy.stats.hypergeom.cdf, with the same signatures.
     """
+    assert 0 <= allowed_failures <= NUMBER_OF_COLUMNS // 2
 
     def math_comb(n: int, k: int) -> int:
         if not 0 <= k <= n:
